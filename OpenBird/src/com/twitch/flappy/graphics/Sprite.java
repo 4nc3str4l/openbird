@@ -5,6 +5,12 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+ * Loads an image and put it into a pixel array.
+ * @author Muriology
+ *
+ */
+
 public class Sprite {
 	
 	private String path;

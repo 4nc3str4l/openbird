@@ -8,6 +8,12 @@ import com.twitch.flappy.Flappy;
 import com.twitch.flappy.graphics.Screen;
 import com.twitch.flappy.graphics.Sprite;
 
+
+/**
+ * This is our player controller (handles key inputs ,"physics", animations...
+ * @author Muriology
+ *
+ */
 public class Bird extends Mob {
 	
 	Flappy flappy;
@@ -52,6 +58,9 @@ public class Bird extends Mob {
 		
 	}
 	
+	/**
+	 * Changes our sprite to make the illusion of an animation
+	 */
 	void updateAnimation(){
 		if(ticks > 7500) ticks = 0;
 		if(ticks % 30 > 10 && ticks < 20){

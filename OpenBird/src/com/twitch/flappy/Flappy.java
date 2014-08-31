@@ -21,7 +21,11 @@ import com.twitch.flappy.mobs.Bird;
 import com.twitch.flappy.mobs.Goal;
 import com.twitch.flappy.mobs.Obstacle;
 import com.twitch.flappy.sound.Sound;
-
+/**
+ * Main Class and and the game loop.
+ * @author Muriology
+ *
+ */
 public class Flappy extends Canvas implements Runnable {
 	
 	private static final long serialVersionUID = 1L;
@@ -96,14 +100,18 @@ public class Flappy extends Canvas implements Runnable {
 		addKeyListener(input);
 		
 	}
-	
+	/**
+	 * Starts our main thread.
+	 */
 	public synchronized void start(){
 		this.running = true;
 		this.thread = new Thread(this,"Game");
 		thread.start();
 
 	}
-	
+	/**
+	 * Stops our main thread
+	 */
 	public synchronized void stop(){
 		this.running = false;
 		try {
@@ -113,7 +121,9 @@ public class Flappy extends Canvas implements Runnable {
 		}
 	}
 	
-	@Override
+	/**
+	 * This method is the responsable of the synchronization of all the game in 60fps and the render.
+	 */
 	public void run() {
 		long lastTime = System.nanoTime();
 		long timer = System.currentTimeMillis();
@@ -143,6 +153,10 @@ public class Flappy extends Canvas implements Runnable {
 		}
 		
 	}
+	
+	/**
+	 * Spawns an obstacle filled with the desired color (int)
+	 */
 	public void spawnObstacle(){
 		if(this.seconds > this.nextSpawn && !this.gameOver){
 			int pX = this.radom.nextInt(350);
@@ -153,6 +167,9 @@ public class Flappy extends Canvas implements Runnable {
 		}
 	}
 	
+	/**
+	 * The main update method, all update methods must be here.
+	 */
 	public void tick(){
 		input.tick();
 		
@@ -172,6 +189,9 @@ public class Flappy extends Canvas implements Runnable {
 		}
 	}
 	
+	/**
+	 * When the game is not over this updates all the elements of the game
+	 */
 	public void updateGame(){
 		bird.tick(input);
 		this.spawnObstacle();
@@ -199,6 +219,10 @@ public class Flappy extends Canvas implements Runnable {
 		}
 	}
 	
+	
+	/**
+	 * Renders all our game pixel by pixel.
+	 */
 	public void render(){
 		BufferStrategy bs = getBufferStrategy();
 		if(bs == null){
